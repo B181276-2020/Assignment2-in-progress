@@ -31,8 +31,9 @@ def interact_query (proceed):
 			#IN THIS CASE, RUN BASH SCRIPT THAT DOES EFETCH!
 		elif proceed == "no":
 			return print("Please re-run the script and enter new search terms.")
+			exit()
 		else :
-			return print("Okay, that is not a Yes or a No. answer yes or no, neither spelt in capitals.")
+			return print("Okay, that is not a Yes or a No. We will continue for now, you may review the downloaded seqeunces later and decide from there.")
 
 #running the function:
 checkpoint1=input("Would you like to fetch the protein files that this search has found? They will be located in the protein_sequences folder. Please answer with yes or no.")	
