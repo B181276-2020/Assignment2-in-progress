@@ -17,29 +17,42 @@ for line in query_file.strip().split("\n"):
 		exit ()
 	else:
 		continue 
-#print ("Your query has results!")
+print ("Your query has results!")
 
 
 
 query_elements=list(query_file.strip().split("\n"))
 print("Your search had",query_elements[2],"Results.\n")
-#A brief interactive bit to allow the user to choose whether to continue or not
 
-def interact_query (proceed):
-		if proceed == "yes" or proceed =="Yes" or proceed =="Y" or proceed =="y":
-			print("Fetching protein sequences now, please wait...")
-			#IN THIS CASE, RUN BASH SCRIPT THAT DOES EFETCH!
-		elif proceed == "no" or proceed =="No" or proceed =="N" or proceed =="n":
-			print("You selected no.");
-			input ("Press enter or any other key followed by enter to try again...") ;
-			os.system("./master_script.sh") ;
-			exit()
-		else :
-			print("Okay, that is not a Yes or a No. We will continue for now, you may review the downloaded seqeunces later and decide from there.")
-			interact_query (checkpoint1)
-		return print ("\n")
-#running the function:
-checkpoint1=input("Would you like to fetch the protein files that this search has found? They will be located in the protein_sequences folder. Please answer with yes or no.")	
-interact_query(checkpoint1)
+#Checking that the query is not too long
+too_long = ""
+if int(query_elements[2]) > int(1000):
+	print ("Your query has more than 1000 results. This means that analysis could be slow.\n")
+	too_long=input("If you would like to continue press enter. If you would like to repeat the search, please type any character followed by enter to enter a new search.")
+#This if statement restarts the whole programm if the search was too long
+if too_long != "":
+	print ("restarting search now...\n Press enter to continue.")
+	input()
+	os.system("./master_script.sh")
+	exit()
+
+
+#A interactive loop that asks the user if they want to continue to fetch the protein sequence
+proceed_1 = None
+while proceed_1 not in ("yes", "Yes", "Y*", "no", "No", "N*"):
+	answer = input("Would you like to fetch the protein files that this search has found? They will be located in the protein_sequences folder (yes/no).")
+	if answer == ("yes" or "Yes" or "Y*"):
+		print("Fetching protein sequences now, please wait...")
+		break
+	elif answer == ("no" or "No" or "N*"):
+		print("You selected no.");
+		input("Press enter or any other key followed by enter to enter a new search...") ;
+		os.system("./master_script.sh") ;
+		print ("Would execute master script again here")
+		exit()
+	else:
+		print ("Please answer with y for yes, or n for no.\n\n")
+
+
 
 
