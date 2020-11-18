@@ -38,7 +38,7 @@ if too_long != "":
 
 
 #A interactive loop that asks the user if they want to continue to fetch the protein sequence
-proceed_1 = None
+proceed_1 = "check"
 while proceed_1 not in ("yes", "Yes", "Y*", "no", "No", "N*"):
 	answer = input("Would you like to fetch the protein files that this search has found? They will be located in the protein_sequences folder (yes/no).")
 	if answer == ("yes" or "Yes" or "Y*"):
