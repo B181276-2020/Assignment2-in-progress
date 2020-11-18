@@ -30,9 +30,15 @@ proteinseq=open("proteinseq.fasta").read()
 def blastthis (fastafile):
 	print ("generating database for the protein sequences. Please wait...")
 	os.system ("makeblastdb -in proteinseq.fasta -input_type fasta -dbtype prot -parse_seqids -out sequencedb ")
-	print ("Now aligning downloaded protein sequences. Please wait...") 
-	os.system ("clustalo -i proteinseq.fasta -o seq_alignment_clustalo.msf -maxnumseq=250 -v")
-	#
+
+	print ("Now aligning downloaded protein sequences. Please wait...")
+
+#Trying out different alignment options
+	#os.system ("blastp -db sequencedb -query proteinseq.fasta -out blast_alignment_format_6.out -outfmt 6")
+	#os.system ("blastp -db sequencedb -query proteinseq.fasta -out blast_alignment_format_8.out -outfmt 8")
+	#THIS ONE IS VERY GOOD FOR GENERATING A .msf FILE!!	
+	os.system ("clustalo -i proteinseq.fasta -o seq_alignment_clustalo.msf --output-order tree-order -v")
+	#--maxnumseq 250
 	alignment=open("seq_alignment_clustalo.msf").read()
 	#print (alignment)
 	#os.system("clear")
