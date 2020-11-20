@@ -14,10 +14,10 @@ echo -e "Processing the following key and web enviornment:\n" "Key:" $key "\n We
 
 #fasta version:
 #WORKS hashed so that download doesn't happen again
-#wget -O proteinseq.fasta "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=protein&query_key=$key&WebEnv=$webenv&rettype=fasta&retmode=text"
+wget -O proteinseq.fasta "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=protein&query_key=$key&WebEnv=$webenv&rettype=fasta&retmode=text"
 
 #Genbank version: DOESNT WORK, FIX THIS
-#wget -O proteinseq_genbank.gb "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=protein&query_key=$key&WebEnv=$webenv&rettype=genbank&retmode=text"
+wget -O proteinseq_genbank.gb "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=protein&query_key=$key&WebEnv=$webenv&rettype=gb&retmode=text"
 
 #A case version of a while statement, checking whether the user wants to continue or not. THIS WORKS IM SO PROUD
 
