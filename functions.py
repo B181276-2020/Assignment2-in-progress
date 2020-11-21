@@ -52,3 +52,9 @@ def plotconthis (alignment):
 	print ("The plot can be found under output_data/conservation_plot.png")
 	#print (plot)	
 	os.system (str(plot))
+	print ("The plot can be found under output_data/conservation_plot.png.\n Press enter to continue...")
+	continuing = input("")
+	os.chdir("..")
+	os.system ("pwd")
+	os.system ("python3 0_interface.py")
+	return plot
