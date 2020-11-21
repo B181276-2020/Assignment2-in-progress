@@ -5,7 +5,7 @@ import os, sys, shutil
 import numpy as np
 import matplotlib.pyplot as plt
 os.system("clear")
-os.chdir("protein_sequences")
+os.chdir("output_data")
 alignment= open("seq_alignment_clustalo.msf")
 
 #This finds all sequence headers and puts them into a list
@@ -50,7 +50,7 @@ for headers in seq_headers:
 	output_file_250.write (seq_only[counter]+"\n\n")
 	counter +=1
 	
-next = input("The 250 best alignment sequences were selected and writen to the file found in protein_sequences/seq_alignment_250.msf. \n Please press enter to continue...")
+next = input("The 250 best alignment sequences were selected and writen to the file found in output_data/seq_alignment_250.msf. \n Please press enter to continue...")
 
 #This section was used to test if there were indeed 250 aligned sequences in the output file. I left this here for the coding user to check if the code above worked:
 

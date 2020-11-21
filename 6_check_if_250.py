@@ -4,7 +4,7 @@
 
 import os, sys, shutil
 os.system("clear")
-os.chdir("protein_sequences")
+os.chdir("output_data")
 alignment= open("seq_alignment_clustalo.msf")
 counter = 0
 
@@ -29,15 +29,10 @@ while proceed_1 not in ("yes", "Yes", "Y*", "no", "No", "N*"):
 		print("Limiting sequences now. please wait...\n")
 		#CONTINUE TO 7_get_top_250_alignments.py
 		os.chdir("..")
-		os.system ("python3 7_get_top_250.py")
+		os.system("python3 7_get_top_250.py")
 		break
 	elif answer == ("no" or "No" or "N*"):
-		print("You selected no.\n Continuing analysis with all",header_count," aligned sequences.")
-		
-		#os.system("./master_script.sh") ;
-		#print ("Would execute master script again here")
-		exit()
-		#CONTINUE TO NEXT SCRIPT HERE
+		print("You selected no.\n Continuing analysis with all",header_count,"aligned sequences.")
 		break
 	else:
 		print ("Please answer with y for yes, or n for no.\n\n")

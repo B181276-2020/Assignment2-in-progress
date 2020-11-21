@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+
+#				Synopsis:
 #A piece of code that evaluates the query.txt file to tell the user whether the query yielded good results or if the search should be repeated
 import os
 os.system("clear")
@@ -11,7 +13,6 @@ query_file=open("query.txt").read()
 
 #This for line checks the query file to make sure nothing is 0.
 for line in query_file.strip().split("\n"):
-	#print (line)
 	if line == "0":
 		print ("Your query result was 0. That means your query did not yield any results, please try searching again. Maybe try new terms and if you use old ones, please check that they are spelt correctly.")
 		exit ()
@@ -39,12 +40,12 @@ if too_long != "":
 
 #A interactive loop that asks the user if they want to continue to fetch the protein sequence
 proceed_1 = "check"
-while proceed_1 not in ("yes", "Yes", "Y*", "no", "No", "N*"):
-	answer = input("Would you like to fetch the protein files that this search has found? They will be located in the protein_sequences folder (yes/no).")
-	if answer == ("yes" or "Yes" or "Y*"):
+while proceed_1 not in ("yes", "Yes", "Y*", "y*", "no", "No", "N*","n*"):
+	answer = input("Would you like to fetch the protein files that this search has found? They will be located in the output_data folder (yes/no).")
+	if answer == ("yes" or "Yes" or "Y*" or "n*"):
 		print("Fetching protein sequences now, please wait...")
 		break
-	elif answer == ("no" or "No" or "N*"):
+	elif answer == ("no" or "No" or "N*" or "n*"):
 		print("You selected no.");
 		input("Press enter or any other key followed by enter to enter a new search...") ;
 		os.system("./master_script.sh") ;

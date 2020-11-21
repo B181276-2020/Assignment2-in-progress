@@ -4,13 +4,13 @@ os.system("clear")
 #				Synopsis:
 # A function that splits up a genbank file and saves it to a list. It then runs a for loop on each element and generates a patmatmotif file. The patmatmotif file gets opened and its contents saved to a output file.
 
-#YOU DONT NEED PATSEXTRACT! THE FILES ARE ALREADY ON THE SERVER:
+
 os.system("locate posite.dat")
-shutil.copy("proteinseq_genbank.gb", "protein_sequences/proteinseq_genbank.gb")
-os.chdir ("protein_sequences")
+shutil.copy("proteinseq_genbank.gb", "output_data/proteinseq_genbank.gb")
+os.chdir ("output_data")
 #Just need to patmatmotif:
 print ("Now processing the motifs found in all the sequences. Please press enter to continue...")
-#HASHED FOR NOW
+
 input("")
 
 
@@ -28,6 +28,7 @@ def patmatallsequences (genbank_file):
 	
 	if os.path.exists ("motifs_in_sequences.out"):
 		os.remove ("motifs_in_sequences.out")
+	os.system("touch motifs_in_sequences.out")
 	
 	count = 0
 #This generates a patmatmotif analysis for each file and outputs the results to the file "motifs_in_sequences.out
@@ -36,11 +37,11 @@ def patmatallsequences (genbank_file):
 		print ("Scanning sequences against PROSITE database, please wait...")
 		count += 1
 		if count == n_genfiles:
-			print ("TRIGGERED BREAKER")
+			#print ("TRIGGERED BREAKER")
 			break
 		else:
-			print ("This is the count:", count)
-			print ("This is the number of files:", n_genfiles)
+			print ("Now on alignment:", count)
+			print ("Out of:", n_genfiles)
 			os.system("touch patmat_infile.gb")
 			patmat_infile = open("patmat_infile.gb","w")
 			patmat_infile.write(element)
@@ -52,28 +53,25 @@ def patmatallsequences (genbank_file):
 			output_file.close()
 			os.remove ("motifs_temp.out")
 			os.remove ("patmat_infile.gb")
-
+	#Fixing the "accounting for lack of consistency in splitting convention"
+	motifs = open("motifs_in_sequences.out").read()
+	motifs_fixed = motifs.replace("$$$$$","//w")
+	os.remove("motifs_in_sequences.out")
+	motifs = open("motifs_in_sequences.out","w")
+	motifs.write(motifs_fixed)
+	motifs.close()
+	motifs = open("motifs_in_sequences.out").read()
+	print (motifs)
+	print ("This is the analysis of all the protein motifs that could be found in the sequences, when scanned against the Prosite database. \n It can be found under output_data/motifs_in_sequences.out")
 temp_input = "proteinseq_genbank.gb"
 patmatallsequences(temp_input)
 
-#Fixing the "accounting for lack of consistency in splitting convention"
-motifs = open("motifs_in_sequences.out").read()
-motifs_fixed = motifs.replace("$$$$$","//w")
-motifs_fixed.close()
-os.remove("motifs_in_sequences.out")
-motifs = open("motifs_in_sequences.out","w")
-motifs.write(motifs_fixed)
-motifs.close()
 
 #check if it worked
-motifs = open("motifs_in_sequences.out").read()
-print (motifs)
-
-print ("This is the analysis of all the protein motifs that could be found in the sequences, when scanned against the Prosite database. \n It can be found under protein_sequences/motifs_in_sequences.out")
+#motifs = open("motifs_in_sequences.out").read()
+#print (motifs)
 
 
-#NOT DONE YET!!!!!!!!!!!!!!!!!!!!!!!!
-#NEEDS genbank file:
 
-#esearch -db protein -query "glucose-6-phosphatase [PROT] AND Aves [ORGN]" | efetch -format gb > G6Pase.gb
+#NEEDS genbank file
 
