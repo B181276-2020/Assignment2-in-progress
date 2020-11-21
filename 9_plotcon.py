@@ -15,6 +15,12 @@ def plotconthis (alignment):
 	print ("The plot can be found under output_data/conservation_plot.png")
 	#print (plot)	
 	os.system (str(plot))
+	print ("The plot can be found under output_data/conservation_plot.png.\n Press enter to continue...")
+	continuing = input("")
+	os.chdir("..")
+	os.system ("pwd")
+	os.system ("python3 0_interface.py")
+	
 
 #Interactive bit that helps work through 
 user_answer = ""
@@ -33,6 +39,8 @@ while user_answer not in ("yes", "Yes", "Y*", "no", "No", "N*"):
 		alignment="seq_alignment_clustalo.msf"
 		plotconthis(alignment)
 		print("\n (Your plot can be found under output_data/conservation_plot.png\n")
+		continuing = input("")
+		os.chdir("..")
 		os.system("python3 0_interface.py")
 		break
 	else:
