@@ -25,7 +25,7 @@ if os.path.exists("protein_sequences"):
 	#print ("protein sequences exist!")
 else:
 	os.mkdir("output_data")
-print ("\t\t\tUSER INTERFACE\t\t\t")
+print ("\t\t\t\tUSER INTERFACE\t\t\t")
 print("Hello there. This is the user interface. \nBelow are all the programmes you can use. Please type the associated number of the program and press enter.\n")
 execute=input("""1.Run all programs in order\n
 2.Esearching for proteins in a taxonomic family on NCBI\n
