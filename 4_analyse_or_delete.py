@@ -7,7 +7,7 @@ os.system("clear")
 proceed = "check"
 proceed_2 = "check"
 while proceed not in ("yes", "Yes", "Y", "y" "no", "No", "N"):
-	answer = input("Would you like to continue? \nIf you answer with yes then the program will continue to aligning the sequences. \nIf you select no, the sequences will be deleted and you will be directed to the user interface.(y/n)")
+	answer = input("Would you like to continue? \nIf you answer with yes then the program will continue to aligning the sequences. \nIf you select no, the sequences will be deleted and you will be directed to the user interface.(yes/no)")
 	if answer == ("yes" or "Yes" or "Y" or "y"):
 		fasta = open("proteinseq.fasta").read()
 		print ("Continuing to analysis...")

@@ -36,7 +36,7 @@ os.remove("query.txt")
 proceed = "check"
 proceed_2 = "check"
 while proceed not in ("yes", "Yes", "Y", "y" "no", "No", "N"):
-	answer = input("Would you like to print the protein sequences to the screen? (y/n)")
+	answer = input("Would you like to print the protein sequences to the screen? (yes/no)")
 	if answer == ("yes" or "Yes" or "Y" or "y"):
 		fasta = open("proteinseq.fasta").read()
 		print (fasta)
@@ -44,7 +44,7 @@ while proceed not in ("yes", "Yes", "Y", "y" "no", "No", "N"):
 		print("You selected no.\n")
 		print("if you would like to see your protein seqeunces, they can be found in the directory \"output_data/proteinseq.fasta\".\n")
 		while proceed_2 not in ("yes", "Yes", "Y*", "no", "No", "N*"):
-			answer_2 = input("Would you like to continue to assessing the sequences for alignment? If you select no you will be taken back to the user interface.(y/n)")
+			answer_2 = input("Would you like to continue to assessing the sequences for alignment? If you select no you will be taken back to the user interface.(yes/no)")
 			if answer_2 == ("yes" or "Yes" or "Y*"):
 				proceed = "yes"
 				break
@@ -89,7 +89,7 @@ while proceed not in ("yes", "Yes", "Y", "y" "no", "No", "N"):
 #A case version of a while statement, checking whether the user wants to continue or not. THIS WORKS IM SO PROUD
 
 #while true; do
-#    read -p "Do you want to print the protein sequences to the screen?(y/n)" yn
+#    read -p "Do you want to print the protein sequences to the screen?(yes/no)" yn
 #    case $yn in
 #        [Yy] ) echo "You said yes! Here are the protein sequences"; cat #proteinseq.fasta ; echo "These are the protein seqeunces downloaded.";;
 #        [Nn] ) echo -e "Okay, if you would like to see your protein seqeunces, they can be found in the directory \"output_data/proteinseq.fasta\".";exit;;

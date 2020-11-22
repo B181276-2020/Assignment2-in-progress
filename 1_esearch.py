@@ -12,12 +12,12 @@ os.system("clear")
 print ("imported os and shutil.\n\n")
 #saving user input into variables
 	#WORKS Hashed for quicker testing
-#taxo = input("Dear user, please provide the taxonomic sub-set you would like to search for. You may search for several taxonomic sub-sets, as long as you connect each extra term with an AND:").replace(" ","+")
-#prot = input("Thank you, now please provide a search term for the type of protein you want to investigate for. Again, if you would like to search for several protein families, please connect any extra terms you would like to search for with an AND:").replace(" ","+")
+taxo = input("Please provide the taxonomic sub-set you would like to search for. You may search for several taxonomic sub-sets, as long as you connect each extra term with an AND:\n").replace(" ","+")
+prot = input("Thank you, now please provide a search term for the type of protein family you want to investigate for. Again, if you would like to search for several protein families, please connect any extra terms you would like to search for with an AND:\n").replace(" ","+")
 
 #Test search terms
-taxo = "Aves"
-prot = "glucose-6-phosphatase"
+#taxo = "Aves"
+#prot = "glucose-6-phosphatase"
 
 search=open("search.txt","w")
 search.write(taxo)

@@ -29,12 +29,12 @@ print("Your search had",query_elements[2],"Results.\n")
 too_long = ""
 if int(query_elements[2]) > int(1000):
 	print ("Your query has more than 1000 results. This means that analysis could be slow.\n")
-	too_long=input("If you would like to continue press enter. If you would like to repeat the search, please type any character followed by enter to enter a new search.")
+	too_long=input("If you would like to continue press enter. If you would like to repeat the search, please type any character followed by enter to return to the user interface. Here, you can press 1 followed by enter to restart the search.")
 #This if statement restarts the whole programm if the search was too long
 if too_long != "":
 	print ("restarting search now...\n Press enter to continue.")
 	input()
-	os.system("./master_script.sh")
+	os.system("./0_interface.py")
 	exit()
 
 

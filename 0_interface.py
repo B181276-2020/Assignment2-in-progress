@@ -50,7 +50,7 @@ elif execute == "3":
 	print("\n")
 	proceed = "check"
 	while proceed not in ("yes", "Yes", "Y*", "no", "No", "N*"):
-			answer_2 = input("You selected 3. \nYou will need your own query keys and web env as input to run this efetch. If you would like to obtain these, please run option 1 instead. Would you like to continue anyway? (y/n)")
+			answer_2 = input("You selected 3. \nYou will need your own query keys and web env as input to run this efetch. If you would like to obtain these, please run option 1 instead. Would you like to continue anyway? (yes/no)")
 			if answer_2 == ("yes" or "Yes" or "Y*"):
 				break
 			elif answer_2 == ("no" or "No" or "N*"):
@@ -71,7 +71,7 @@ elif execute == "4":
 	print("\n")
 	proceed = "check"
 	while proceed not in ("yes", "Yes", "Y*", "no", "No", "N*"):
-			answer_2 = input("You selected 4. \nYou will need your own downloaded .fasta file containing protein sequences located in the output_data directory. If you would like to generate one, please run option 1 instead. Would you like to continue anyway? (y/n)")
+			answer_2 = input("You selected 4. \nYou will need your own downloaded .fasta file containing protein sequences located in the output_data directory. If you would like to generate one, please run option 1 instead. Would you like to continue anyway? (yes/no)")
 			if answer_2 == ("yes" or "Yes" or "Y*"):
 				break
 			elif answer_2 == ("no" or "No" or "N*"):
@@ -92,7 +92,7 @@ elif execute == "5":
 	print("\n")
 	proceed = "check"
 	while proceed not in ("yes", "Yes", "Y*", "no", "No", "N*"):
-			answer_2 = input("You selected 5. \nYou will need your own aligned sequences in a file format compatible with plotcon (such as an .msf file). If you would like to generate such a file, please run option 1 instead. Would you like to continue anyway? (y/n)")
+			answer_2 = input("You selected 5. \nYou will need your own aligned sequences in a file format compatible with plotcon (such as an .msf file). If you would like to generate such a file, please run option 1 instead. Would you like to continue anyway? (yes/no)")
 			if answer_2 == ("yes" or "Yes" or "Y*"):
 				break
 			elif answer_2 == ("no" or "No" or "N*"):
@@ -112,7 +112,7 @@ elif execute == "6":
 	print("\n")
 	proceed = "check"
 	while proceed not in ("yes", "Yes", "Y*", "no", "No", "N*"):
-			answer_2 = input("You selected 6. \nYou will need a alignment file name that corresponds to a suitable file containing alignments, located in the output_data directory (such as an .msf file). If you would like to generate such a file, please run option 1 first. Would you like to continue anyway? (y/n)")
+			answer_2 = input("You selected 6. \nYou will need a alignment file name that corresponds to a suitable file containing alignments, located in the output_data directory (such as an .msf file). If you would like to generate such a file, please run option 1 first. Would you like to continue anyway? (yes/no)")
 			if answer_2 == ("yes" or "Yes" or "Y*"):
 				break
 			elif answer_2 == ("no" or "No" or "N*"):
@@ -133,7 +133,7 @@ elif execute == "7":
 	print("\n")
 	proceed = "check"
 	while proceed not in ("yes", "Yes", "Y*", "no", "No", "N*"):
-			answer_2 = input("You selected 7. You will need a alignment file name that corresponds to a suitable file containing alignments, located in the output_data directory (such as an .msf file). If you would like to generate such a file, please run option 1 first. Would you like to continue anyway? (y/n)")
+			answer_2 = input("You selected 7. You will need a alignment file name that corresponds to a suitable file containing alignments, located in the output_data directory (such as an .msf file). If you would like to generate such a file, please run option 1 first. Would you like to continue anyway? (yes/no)")
 			if answer_2 == ("yes" or "Yes" or "Y*"):
 				break
 			elif answer_2 == ("no" or "No" or "N*"):
