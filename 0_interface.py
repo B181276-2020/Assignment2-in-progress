@@ -102,7 +102,7 @@ elif execute == "5":
 	os.chdir("output_data")	
 	input_1 = input("Please enter the name of the file containing your alignments:\n")
 	input_1 = input("Please enter the subtitle you would like to write under the title of the graph:\n")
-	#imported 9_plotcon.py plotcon this module earler, now used it here
+	#imported plotcon functionmodule earler, now used it here
 	plotconthis(input_1,input_2)
 	print ("Press enter to return to the user interface.")
 	input = ""
