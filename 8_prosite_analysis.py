@@ -22,7 +22,7 @@ def patmatallsequences (genbank_file):
 	genbanks = infile.replace("//w","$$$$$")
 	each_genbank = genbanks.split("//")
 	n_genfiles = len(each_genbank)
-	print (n_genfiles)
+	print ("Now processing "+str(n_genfiles)+" files. Press enter to continue...")
 	input("")
 	#This accounts for if the output file already exists
 	

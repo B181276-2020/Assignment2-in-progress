@@ -5,21 +5,22 @@
 #SHOULD ADD AN OPTION FOR THE USER TO USE THESE FUNCTIONS WITH THEIR OWN FASTA FILES IF THEY WISH MAYBE
 import os, sys, shutil
 os.system("clear")
+shutil.copyfile("search.txt", "output_data/search.txt")
 os.chdir("output_data")
 
-def plotconthis (alignment):
+def plotconthis (alignment,subtitle):
+	import os, shutil, subprocess
 	print ("Now plotting the conservation of sequences across the protein alignment...")
-	search_info=open("search.txt").read()
-	plot="plotcon -sequences "+alignment+" -winsize 12 -graph x11 -scorefile EBLOSUM62 -gsubtitle \""+search_info+"\" > conservation_plot.png"
-	#KICKS ME OUT HERE, MIGHT HAVE TO WRITE A SCRIPT OUTSIDE OF THIS TO CONTINUE THE PROGRAM
+	#search_info=open("search.txt").read()
+	plot="plotcon -sequences "+alignment+" -winsize 12 -graph x11 -scorefile EBLOSUM62 -gsubtitle "+subtitle+" > conservation_plot.png"
 	print ("The plot can be found under output_data/conservation_plot.png")
-	#print (plot)	
 	os.system (str(plot))
 	print ("The plot can be found under output_data/conservation_plot.png.\n Press enter to continue...")
 	continuing = input("")
 	os.chdir("..")
 	os.system ("pwd")
 	os.system ("python3 0_interface.py")
+	return plot
 	
 
 #Interactive bit that helps work through 
@@ -29,7 +30,9 @@ while user_answer not in ("yes", "Yes", "Y*", "no", "No", "N*"):
 	if user_answer == ("yes" or "Yes" or "Y*"):
 		print("Plotting Conservation of top 250 alignments, please wait...")
 		alignment="seq_alignment_250.msf"
-		plotconthis(alignment)
+		subtitle=open("search.txt").read().replace(" ",",")
+		print (subtitle)
+		plotconthis(alignment,subtitle)
 		print("\n (Your plot can be found under output_data/conservation_plot.png\n")
 		os.system("python3 0_interface.py")
 		break

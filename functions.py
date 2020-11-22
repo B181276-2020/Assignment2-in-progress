@@ -34,23 +34,18 @@ def aligner (fastafile):
 	print ("Now aligning downloaded protein sequences. Please wait...")
 	#This aligns all the sequences in order of best alignment to worst alignment, based on an algorithm processed by clustalo 
 	system_call = "clustalo -i "+fastafile+" -o seq_alignment_clustalo.msf --output-order tree-order --force -v"
-	#os.system ("clustalo -i proteinseq.fasta -o seq_alignment_clustalo.msf --output-order tree-order --force -v")
 	os.system (system_call)
 	alignment=open("seq_alignment_clustalo.msf").read()
-	#print (alignment)
-	#os.system("clear")
 	print ("The clustal omega alignment was completed. It can be found under output_data/seq_alignment_clustalo.msf")
 	return system_call
 
-#Feeds a file into plotcon
-def plotconthis (alignment):
+#Feeds a file into plotcon command and runs it with a os.system call. Returns to the user interface at the end
+def plotconthis (alignment,subtitle):
 	import os, shutil, subprocess
 	print ("Now plotting the conservation of sequences across the protein alignment...")
-	search_info=open("search.txt").read()
-	plot="plotcon -sequences "+alignment+" -winsize 12 -graph x11 -scorefile EBLOSUM62 -gsubtitle \""+search_info+"\" > conservation_plot.png"
-	#KICKS ME OUT HERE, MIGHT HAVE TO WRITE A SCRIPT OUTSIDE OF THIS TO CONTINUE THE PROGRAM
+	#search_info=open("search.txt").read()
+	plot="plotcon -sequences "+alignment+" -winsize 12 -graph x11 -scorefile EBLOSUM62 -gsubtitle \""+subtitle+"\" > conservation_plot.png"
 	print ("The plot can be found under output_data/conservation_plot.png")
-	#print (plot)	
 	os.system (str(plot))
 	print ("The plot can be found under output_data/conservation_plot.png.\n Press enter to continue...")
 	continuing = input("")
@@ -58,3 +53,29 @@ def plotconthis (alignment):
 	os.system ("pwd")
 	os.system ("python3 0_interface.py")
 	return plot
+
+#Creating an alignment file suitable for publication
+#Feeds a inputfile determined by the user into a command and runs it using a os system call
+def showalignthis (inputfile,outfile):
+	import os, shutil, subprocess
+	#Creates a string using the input for inputfile and outfile, to make a system call to run a showalign emboss. 
+	#This generates a very pretty alignment file that can be used for a publication
+	showalign_call = "showalign -sequence "+inputfile+" -outfile "+outfile
+	print (showalign_call)
+	os.system(showalign_call)
+	print ("\n\nAn alignment suitable for publication was generated!\n It can be found under outputdata/"+outfile+" .")
+	#copyover = "output_data/"+outfile
+	#shutil.copy(outfile, copyover)
+	return showalign_call
+
+#Generating a consensus sequence:
+#Feeds a inputfile determined by the user into a command and runs it using a os system call
+def consthis (inputfile,outfile):
+	import os, shutil, subprocess
+	#Creates two strings, using the input for inputfile and outfile, to make a system call to run a con emboss, generating a consensus sequence for a set of aligned sequences 
+	cons_call = "cons -sequence "+inputfile+" -outseq "+outfile
+	print (cons_call)
+	os.system(cons_call)
+	print ("\n\nA consensus sequence for your alignment file was generated!\n It can be found under outputdata/"+outfile+" .")
+	return cons_call
+
